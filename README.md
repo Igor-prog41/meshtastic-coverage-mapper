@@ -1,6 +1,6 @@
 # Meshtastic Coverage — Red Deer, Alberta
 
-~20 nodes heard over a few days on the local LoRa mesh → SQLite → GeoPandas → ArcGIS Pro coverage map.
+~20 nodes heard in about an hour on the local LoRa mesh → SQLite → GeoPandas → ArcGIS Pro coverage map.
 
 ## The pipeline
 
