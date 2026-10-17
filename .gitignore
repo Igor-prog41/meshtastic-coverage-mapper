@@ -1,5 +1,21 @@
+# databases (raw node coordinates stay private)
 mesh_data.db
 mesh_data.db-journal
+
+# environments
+.env
+.venv/
+venv/
+ENV/
+
+# python
 __pycache__/
+*.py[cod]
+*.egg-info/
+
+# IDEs
 .idea/
+.vscode/
+
+# project artefacts
 coverage_shp/

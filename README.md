@@ -5,7 +5,7 @@
 ## The pipeline
 
 ```
-airwaves → Python → SQLite → GeoPandas → ArcGIS Pro → JPEG
+airwaves → Meshtastic → Python → SQLite → GeoPandas → ArcGIS Pro → JPEG
 ```
 
 1. **`meshtastic_sniffer.py`** — listens on USB-serial to a LilyGo T-Echo node and logs every heard packet into `mesh_data.db`: node positions (`POSITION_APP`), device telemetry (`TELEMETRY_APP`: battery, voltage, channel utilization), node names (`NODEINFO_APP`).
@@ -14,7 +14,7 @@ airwaves → Python → SQLite → GeoPandas → ArcGIS Pro → JPEG
 
 ## Honest caveat
 
-This is **not** measured RF coverage. The polygon is the union of nominal 5 km buffers around heard nodes — an estimate of where the mesh *could* reach, not a field measurement. A terrain-aware viewshed upgrade is planned for v2.
+This is **not** measured RF coverage. The polygon is the union of nominal 5 km buffers around heard nodes — an estimate of where the mesh *could* reach, not a field measurement.
 
 ## Files
 
@@ -22,8 +22,10 @@ This is **not** measured RF coverage. The polygon is the union of nominal 5 km b
 |---|---|
 | `meshtastic_sniffer.py` | USB-serial packet sniffer → SQLite (`mesh_data.db`) |
 | `coverage_polygon.py` | 5 km buffers + union → GeoJSON / shapefile |
+| `requirements.txt` | Python dependencies (`pip install -r requirements.txt`) |
+| `.gitignore` | Keeps the raw database and local artefacts out of the repo |
 | `coverage.geojson` | Interactive map on GitHub |
-| `coverage_map.jpg` | The money shot — map image from the LinkedIn post |
+| `RedDeerMeshtastic.jpg` | The money shot — map image from the LinkedIn post |
 
 ## Run it (Windows)
 
@@ -32,9 +34,3 @@ pip install meshtastic geopandas
 python meshtastic_sniffer.py      :: auto-detects the COM port (override with --port if needed)
 python coverage_polygon.py        :: needs mesh_data.db next to the script
 ```
-
-## Roadmap
-
-- Second node (planned) → mobile telemetry: a tracker in the car
-- Telemetry dashboard (Power BI): battery, SNR, channel load per node
-- v2: terrain-aware viewshed instead of nominal buffers
