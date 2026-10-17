@@ -1,0 +1,5 @@
+mesh_data.db
+mesh_data.db-journal
+__pycache__/
+.idea/
+coverage_shp/
